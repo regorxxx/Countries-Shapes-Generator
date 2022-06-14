@@ -13,7 +13,7 @@ A python script to generate country shapes in multiple [projections](https://sci
 ## Usage
 Put all files into folder, for example at 'countries-shapes-generator'. Since every figure will be shown on the GUI, it's recommended to use an IDE which allows to show plots on its own window, like [spyder-ide](https://www.spyder-ide.org/). Otherwise run on python:
 ```
-python countries-shapes-generator.py
+python countriesShapesGenerator.py
 ```
 As output multiple sub-folders will be created at the root, one per projection (should take +20 min):
 
