@@ -1,4 +1,4 @@
-# countries-shapes-generator
+# Countries-Shapes-Generator
 [<img src="https://user-images.githubusercontent.com/83307074/173630971-d75d3631-0711-4e7c-b494-11347fea6889.png" width=30% height=30%>](https://www.naturalearthdata.com/downloads/50m-natural-earth-1/50m-natural-earth-i-with-shaded-relief-and-water/)
 
 [![version][version_badge]][changelog]
