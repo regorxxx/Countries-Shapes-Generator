@@ -6,7 +6,7 @@
 [![Codacy Badge][codacy_badge]](https://www.codacy.com/gh/regorxxx/Countries-Shapes-Generator/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=regorxxx/countries-shapes-generatorn&amp;utm_campaign=Badge_Grade)
 ![GitHub](https://img.shields.io/github/license/regorxxx/Countries-Shapes-Generator)
 
-A python script to generate country shapes in multiple [projections](https://scitools.org.uk/cartopy/docs/latest//reference/projections.html) compatible in size with world maps (i.e. meant to be used as layers). Output as png files. Designed to be used as an alternative to server-side JS libraries for world map rendering in some use-cases.
+A python script to generate country shapes in multiple [projections](https://scitools.org.uk/cartopy/docs/latest//reference/projections.html) compatible in size with world maps (i.e. meant to be used as layers). Output as png files. Designed to be used as an alternative to server-side JS libraries for world map rendering in some use-cases. Rendered files may be found [here](https://github.com/regorxxx/country-shapes).
 
 ![worldmap_shapes](https://user-images.githubusercontent.com/83307074/173636127-d3d96671-2780-4698-93d7-9a4a7654143a.png)
 
