@@ -1,11 +1,11 @@
 ﻿# -*- coding: utf-8 -*-
 """countries-shapes-generator
-Created on Tue Jun 14 17:55:08 2022
+Created on Wed Nov 14 11:23:00 2023
 
 @author: Regorxxx
 
 Requires:
-  - cartopy
+  - cartopy +0.21.1
   - matplotlib
   - Natural Earth 'shaded relief and water':
     https://www.naturalearthdata.com/download/downloads/50m-natural-earth-1/
@@ -45,7 +45,8 @@ countries_shp = shpreader.natural_earth(resolution='110m',
 # print(sorted(country.attributes.keys()))
 
 def printShapes(toPath, proj = ccrs.Mercator(),
-                color = np.array((199, 233, 192)) / 255):
+                color = np.array((199, 233, 192)) / 255,
+                background = None):
     """
     Print every country shape with transparent background and placed in its
     absolute position at the world map, i.e. just delete the other countries.
@@ -58,11 +59,16 @@ def printShapes(toPath, proj = ccrs.Mercator(),
         Projection used. The default is ccrs.Mercator().
     color : rgb array, optional
         Shape color. The default is np.array((199, 233, 192)) / 255.
-
+    background : rgb array, optional
+        Background color. The default is None (transparent).
+        
     Returns
     -------
     None. (output files on path)
     """
+    if not os.path.exists(toPath):
+        os.makedirs(toPath, True)
+
     for countryHighlight in shpreader.Reader(countries_shp).records():
         plt.cla() # Reset on every loop to only paint current country
         ax = plt.axes(projection=proj)
@@ -89,12 +95,18 @@ def printShapes(toPath, proj = ccrs.Mercator(),
         path = toPath + iso_id + '.png'
         print(iso_id + ': ' + path)
         plt.box(False)
-        plt.savefig(path, dpi = my_dpi, transparent=True, bbox_inches='tight')
+        if (background is None):
+            plt.savefig(path, dpi = my_dpi, transparent=True,
+                        bbox_inches='tight')
+        else:
+            plt.savefig(path, dpi = my_dpi, facecolor = background,
+                        bbox_inches='tight')
         plt.show(block=False)
 
 # 
 def printShapesMap(toPath, proj = ccrs.Mercator(),
-                   color = np.array((0, 0, 0)) / 255):
+                   color = np.array((0, 0, 0)) / 255,
+                   background = None):
     """
     Print entire world map using country shapes.
 
@@ -106,12 +118,17 @@ def printShapesMap(toPath, proj = ccrs.Mercator(),
         Projection used. The default is ccrs.Mercator().
     color : rgb array, optional
         Shape color. The default is np.array((0, 0, 0)) / 255.
+    background : rgb array, optional
+        Background color. The default is None (transparent).
 
     Returns
     -------
     None. (output files on path)
 
     """
+    if not os.path.exists(toPath):
+        os.makedirs(toPath, True)
+    
     plt.cla()
     ax = plt.axes(projection=proj)
     for country in shpreader.Reader(countries_shp).records():
@@ -121,7 +138,12 @@ def printShapesMap(toPath, proj = ccrs.Mercator(),
     
     path = toPath + 'worldmap_shapes.png'
     plt.box(False)
-    plt.savefig(path, dpi = my_dpi, transparent=True, bbox_inches='tight')
+    if (background is None):
+        plt.savefig(path, dpi = my_dpi, transparent=True,
+                    bbox_inches='tight')
+    else:
+        plt.savefig(path, dpi = my_dpi, transparent=True,
+                    facecolor = background, bbox_inches='tight')
     plt.show(block=False)
     print('Shapes earth map: ' + path)
 
@@ -141,6 +163,9 @@ def printNaturalMap(toPath, proj = ccrs.Mercator()):
     None. (output files on path)
 
     """
+    if not os.path.exists(toPath):
+        os.makedirs(toPath, True)
+    
     plt.cla()
     ax = plt.axes(projection=proj)
     path = toPath + 'worldmap_natural.png'
@@ -153,7 +178,10 @@ def printNaturalMap(toPath, proj = ccrs.Mercator()):
     print('Earth map: ' + path)
 
 def main(toPath = 'countries-Mercator\\',
-         proj = ccrs.Mercator()):
+         proj = ccrs.Mercator(),
+         countryColor = np.array((199, 233, 192)) / 255,
+         mapColor = np.array((0, 0, 0)) / 255,
+         background = None):
     """
     Print shapes, shapes map and natural map.
 
@@ -163,16 +191,22 @@ def main(toPath = 'countries-Mercator\\',
         Folder path for output.
     proj : cartopy.crs projection, optional
         Projection used. The default is ccrs.Mercator().
-
+    countryColor : rgb array, optional
+        Country shape color. The default is np.array((199, 233, 192)) / 255.
+    mapColor : rgb array, optional
+        Map shape color. The default is np.array((0, 0, 0)) / 255.
+    background : rgb array, optional
+        Background color. The default is None (transparent).
+        
     Returns
     -------
     None. (output files on path)
     """
     if not os.path.exists(toPath):
-        os.makedirs(toPath)
+        os.makedirs(toPath, True)
     
-    printShapes(toPath, proj)
-    printShapesMap(toPath, proj)
+    printShapes(toPath, proj, countryColor, background)
+    printShapesMap(toPath, proj, mapColor, background)
     printNaturalMap(toPath, proj)
 
 if __name__ == '__main__':

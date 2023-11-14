@@ -6,7 +6,10 @@
 
 ## [Unreleased][]
 ### Added
+- Main function now also allows to set 'countryColor' and 'mapColor' for the country shapes and shapes map respectively.
+- printShapes and printShapesMap functions now also allow to set 'background', by default equal to None (transparent). Set it to a color array to create images with a color background for masking.
 ### Changed
+- Target path is checked on all functions, and created if needed -and any intermediate-level directory-. It was only checked on the main function before.
 ### Removed
 ### Fixed
 
