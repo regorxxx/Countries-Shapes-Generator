@@ -20,7 +20,7 @@ As output multiple sub-folders will be created at the root, one per projection (
 ![image](https://user-images.githubusercontent.com/83307074/173627870-5231298e-74f7-4f32-a6af-77ea07917803.png)
 
 Every country will have an associated file by its [ISO 3166-1 alfa-3 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) (i.e. Canada -> CAN).
-Also 2 world maps image files will be available: 'worldmap_shapes' ad 'worldmap_natural'. They should be size-compatible with all the other files.
+Also 2 world maps image files will be available: 'worldmap_shapes' and 'worldmap_natural'. They should be size-compatible with all the other files.
 
 ![image](https://user-images.githubusercontent.com/83307074/173627927-043a70f6-030c-4f15-a590-067fd32bb922.png)
 
